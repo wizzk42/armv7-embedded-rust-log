@@ -1,0 +1,8 @@
+[package]
+name = "log"
+categories = ["embedded", "no-std"]
+description = "logging for ARM Cortex-M series microcontrollers"
+keywords = ["arm", "cortex-m", "logging"]
+version = "0.1.0"
+authors = ["Matthias Muenzner <matthias.muenzner@jkaref.com>"]
+edition = "2018"

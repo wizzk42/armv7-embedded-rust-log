@@ -1,0 +1,13 @@
+/* .log section for zero cost symbol logging */
+SECTIONS
+{
+  .log 0 (INFO) : {
+    *(.log.error);
+    __log_warning_start__ = .;
+    *(.log.warning);
+    __log_info_start__ = .;
+    *(.log.info);
+    __log_debug_start__ = .;
+    *(.log.debug);
+  }
+}
