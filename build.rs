@@ -7,28 +7,17 @@ use std::{
 };
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let target = env::var("TARGET")?;
-
-    has_fpu(&target);
-
     let out = PathBuf::from(
-        env::var_os("OUT_DIR")
-            .unwrap()
+        env::var_os("OUT_DIR").unwrap_or_default()
     );
 
-    println!("target: {}", target);
     println!("cargo:rustc-link-search={}", out.display());
     println!("cargo:rerun-if-changed=build.rs");
 
     File::create(out.join("log.x"))?
-        .write_all(include_bytes!("scripts/linker/log.x.in"))?;
+        .write_all(include_bytes!("linker/log.x.in"))
+        .expect("cannot write log.x linker script");
+
     println!("cargo:rerun-if-changed=log.x.in");
-
     Ok(())
-}
-
-fn has_fpu(target: &str) {
-    if target.ends_with("eabihf") {
-        println!("cargo:rustc-cfg=has_fpu");
-    }
 }

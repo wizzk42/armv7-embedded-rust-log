@@ -6,3 +6,14 @@ keywords = ["arm", "cortex-m", "logging"]
 version = "0.1.0"
 authors = ["Matthias  <wizzk42@gmail.com>"]
 edition = "2018"
+publish = false
+
+[lib]
+crate-type = ["rlib"]
+
+[dev-dependencies]
+pretty_assertions = "~0.6.1"
+
+[badges]
+travis-ci = { repository = " wizzk42 / armv7-embedded-rust-log", branch = "master" }
+maintenance = { status = "experimental" }
